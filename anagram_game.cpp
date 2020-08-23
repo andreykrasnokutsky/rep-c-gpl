@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	srand(time(NULL));
-	string  word[1000];//массив слов из input
+	string  word[1000];//массив слов из input_500_words
 	int i=0;//счетчик
 	int j;
 	int wordscount=0;//количество слов
