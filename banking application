@@ -1,0 +1,72 @@
+//Trying structures. Banking application.
+#include <iostream>
+
+void printing_results(std::string answer1, std::string answer2, int amount)//printing amounts function
+{
+	std::cout<<"Your amount in "<<answer1<<" on "<<answer2<<": "<<amount<<std::endl;
+}
+
+int main()
+{
+	struct my_money//structure for the account assets
+	{
+        	int metals;
+        	int currency;
+        	int shares;
+        	int rubles;
+	};
+	my_money bank;
+	my_money cash;
+	bank.metals=5000;
+	bank.currency=6000;
+	bank.shares=200;
+	bank.rubles=0;
+	cash.metals=0;
+	cash.currency=0;
+	cash.shares=0;
+	cash.rubles=500;
+
+	std::cout<<"Your bank account application. Choose (bank/cash): ";//asking what to show
+	std::string answer1;
+	std::cin>>answer1;
+	std::cout<<"Choose (metals/currency/shares/rubles): ";
+	std::string answer2;
+	std::cin>>answer2;
+
+	if (answer1=="bank")//showing
+	{
+		if (answer2=="metals") printing_results(answer1,answer2,bank.metals);
+		else if (answer2== "currency") printing_results(answer1,answer2,bank.currency);
+                else if (answer2== "shares") printing_results(answer1,answer2,bank.shares);
+		else if (answer2== "rubles") printing_results(answer1,answer2,bank.rubles);
+		else
+		{
+			std::cout<<"Incorrect input."<<std::endl;
+			return 0;
+		}
+ 	}
+	else if (answer1=="cash")
+        {
+                if (answer2=="metals") printing_results(answer1,answer2,cash.metals);
+                else if (answer2== "currency") printing_results(answer1,answer2,cash.currency);
+                else if (answer2== "shares") printing_results(answer1,answer2,cash.shares);
+                else if (answer2== "rubles") printing_results(answer1,answer2,cash.rubles);
+                else
+		{
+			std::cout<<"Incorrect input."<<std::endl;
+			return 0;
+		}
+        }
+	else
+	{
+		std::cout<<"Incorrect input."<<std::endl;
+		return 0;
+	}
+
+	std::cout<<"Return to the beginning? (y/n): ";//asking if the program should be repeated
+	char answer3;
+	std::cin>>answer3;
+	if (answer3=='y') main();
+	else if (answer3=='n') return 0;
+	else std::cout<<"Incorrect input."<<std::endl;
+}
