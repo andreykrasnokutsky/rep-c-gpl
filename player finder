@@ -1,0 +1,39 @@
+//nested structure
+#include <iostream>
+
+int main()
+{
+	struct guild //nested, guild structure
+	{
+		std::string orc;
+		std::string undead;
+		std::string tauren;
+		std::string troll;
+	};
+	guild Cupcake;
+	Cupcake.orc="Isolde";
+	Cupcake.undead="Flamingo";
+	Cupcake.tauren="Bluffs";
+	Cupcake.troll="Yesha";
+	guild Avalon{"Rogzzi","Seulmort","Songarrow","Prawdahealin"};
+	
+	struct server //main, server structure
+	{
+		guild Cupcake;
+		guild Avalon;
+	};
+	server Kronos4{{Cupcake.orc,Cupcake.undead,Cupcake.tauren,Cupcake.troll},{Avalon.orc,Avalon.undead,Avalon.tauren,Avalon.troll}};
+	//server Kronos4=>Kronos4.Cupcake=>guild Cupcake=>Cupcake.troll=>player's name
+
+	std::cout<<"What race should I show? (orc/undead/tauren/troll): ";//question, what to show
+	std::string *answer=new std::string;
+	std::cin>>*answer;
+	if (*answer=="orc") std::cout<<"Players of this race are: "<<Cupcake.orc<<", "<<Avalon.orc<<"."<<std::endl;//choosing based on the answer
+	else if (*answer=="undead") std::cout<<"Players of this race are: "<<Cupcake.undead<<", "<<Avalon.undead<<'.'<<std::endl;
+	else if (*answer=="tauren") std::cout<<"Players of this race are: "<<Cupcake.tauren<<", "<<Avalon.tauren<<'.'<<std::endl;
+	else if (*answer=="troll") std::cout<<"Players of this race are: "<<Cupcake.troll<<", "<<Avalon.troll<<"."<<std::endl;
+	else if (*answer=="nigga") std::cout<<"Shut up, racist."<<std::endl;
+	else std::cout<<"Incorrect input."<<std::endl;
+	delete answer;
+	return 0;
+}
